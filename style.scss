@@ -1,3 +1,118 @@
-h1 {
-   color: goldenrod;
+@use "./varibles" as var;
+@use "./mixin" as mixin;
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  &__logo {
+    color: var.$base-color;
+  }
+  &__ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    flex-grow: 1;
+  }
+}
+
+.main {
+  font-size: 1rem;
+
+  &__section1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &__img {
+      height: 10rem;
+      width: 15rem;
+    }
+  }
+
+  &__section2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem;
+    @include mixin.responsive("small") {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: aqua;
+    }
+
+    @include mixin.responsive("large") {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin: 1rem;
+      background-color: cornflowerblue;
+    }
+
+    &__article {
+      margin: var.$margin;
+    }
+    &__title {
+      font-style: italic;
+      color: var.$title-color;
+    }
+
+    &__text {
+      text-align: justify;
+      height: 13rem;
+    }
+
+    &__img {
+      height: 15rem;
+      width: 20rem;
+    }
+  }
+
+  &__section3 {
+    &__ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: var.$margin;
+      list-style-type: none;
+    }
+  }
+
+  &__section4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: var.$margin;
+    }
+    &__img {
+      height: 13rem;
+      width: 15rem;
+      margin: var.$margin;
+    }
+    &__btn {
+      @include mixin.btn;
+    }
+  }
+
+  &__section5 {
+    &__btn {
+      @include mixin.btn;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__img {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
 }

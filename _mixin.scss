@@ -1,0 +1,27 @@
+@mixin btn {
+  border: 1px solid #1c0c5b;
+  border-radius: 10px;
+  height: 1.5rem;
+}
+
+$breakpoints: (
+  "small": (
+    min-width: 767px,
+  ),
+  "medium": (
+    min-width: 992px,
+  ),
+  "large": (
+    min-width: 1200px,
+  ),
+) !default;
+
+@mixin responsive($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+}
+
+// not mandatory
